@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 )
@@ -16,8 +17,9 @@ type User struct {
 func main() {
 	f, err := os.Open("sample.txt")
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
+
 	defer f.Close()
 
 	var user []User
@@ -36,7 +38,7 @@ func main() {
 			user = append(user, human)
 		}
 	}
-	for _, i := range user {
-		fmt.Println(i)
+	for _, u := range user {
+		fmt.Println(u)
 	}
 }
